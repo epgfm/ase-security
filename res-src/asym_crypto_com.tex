@@ -1,0 +1,59 @@
+% Mobile ad-hoc network
+% Author: Dr. Ludger Humbert
+% Source: https://haspe.homeip.net/projekte/ddi/browser/tex/pgf2
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usepackage{pgf}
+
+\usepackage{xxcolor}
+
+\usetikzlibrary{arrows,shadows,petri}
+%                              wg. tokens
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\listfiles
+
+\begin{document}
+
+\begin{tikzpicture}[
+    knoten/.style={
+      shading=ball,
+      circle,
+      inner sep=.25cm,
+      outer sep=.5cm,
+      circular drop shadow,
+      draw},
+    /schriftstueck/.code 2 args={
+      \fill[red!50, opacity=#2] #1 rectangle +(.6,.7);
+      \foreach \y in {0pt,2pt,4pt,6pt,8pt,10pt,12pt,14pt}
+       \draw [yshift=\y, opacity=#2] #1+(0.1,0.1) -- +(0.1,0.1);
+      }
+    ]
+
+  \node at (0,.5) (knoten0) [knoten, ball color=cyan!60!black] {\texttt{\ \ Alice\ \ }};
+
+  \node[rectangle,draw,opacity=.5] at (2.8,1)  (ack10) {\texttt{Je vais bouffer.}};
+
+  \node at (5.5,.5) (knoten1) [knoten, ball color=red!60!black] {A-Private};
+  \node at (5.5,6.5) (knotenBPublic) [knoten, ball color=green!60!black] {B-Public};
+
+  \node[rectangle,draw,opacity=.5] at (8.8,0)  (ack11)  {\texttt{]y\&RG+euA\%.!BPS}};
+
+  \node at (12,.5) (knoten2) [knoten, ball color=green!60!black] {A-Public};
+  \node at (12,6.5) (knotenBPublic) [knoten, ball color=red!60!black] {B-Private};
+
+  \node[rectangle,draw,opacity=.5] at (16.8,3.5)  (ack10) {\texttt{Je vais bouffer.}};
+
+
+  \node at (17.5,6.5) (knoten3) [knoten, ball color=cyan!60!black] {\texttt{\ \ Bob \ \ \ }};
+  
+
+  \path  [-latex] (knoten1) edge [] (knoten0);
+  \path  [-latex] (knoten2) edge [] (knoten1);
+  \path  [-latex] (knoten3) edge [] (knoten2);
+
+\end{tikzpicture}
+
+\end{document}

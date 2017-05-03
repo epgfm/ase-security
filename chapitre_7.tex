@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[xcolor=dvipsnames,notes]{beamer}
+\usepackage{pgfpages}
+\usepackage{multicol}
+
+\usepackage{color}
+\usepackage{alltt}
+\usepackage[T1]{fontenc}
+
+% For graphics
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{xxcolor}
+\usetikzlibrary{arrows,shadows,petri}
+%%%%
+
+
+\setbeameroption{show notes}
+%\setbeameroption{show notes on second screen=right}
+
+\mode<presentation> {
+
+    \usetheme{Security}
+
+}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%    TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\setbeamertemplate{footline}
+{
+    \leavevmode
+    \hbox{
+        \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}
+            \usebeamerfont{author in head/foot}\insertshortauthor
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+            \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+            \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+        \end{beamercolorbox}
+    }
+    \vskip0pt
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\title[Administration des systèmes d'exploitation - Sécurité]{
+        Administration des systèmes d'exploitation \\ Sécurité
+}
+
+\author{Etienne Papegnies} % Your name
+\institute[UAPV] {
+Université d'Avignon et des Pays de Vaucluse \\
+    \medskip
+    \textit{etienne.papegnies@univ-avignon.fr}
+}
+\date{2017} % Date, can be changed to a custom date
+
+\begin{document}
+
+%------------------------------------------------
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+%------------------------------------------------
+
+\AtBeginSection[]
+{
+    \begin{frame}<beamer>
+        \frametitle{Plan}
+        \begin{multicols}{2}
+            \tableofcontents[currentsection, subsectionstyle=hide]
+        \end{multicols}
+    \end{frame}
+}
+
+
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+        \frametitle{Plan}
+        \tableofcontents[
+            currentsection,
+            sectionstyle=show/hide,
+            currentsubsection,
+            subsectionstyle=show/shaded/hide
+        ]
+   \end{frame}
+}
+
+
+
+
+%------------------------------------------------------------------------------
+%    PRESENTATION SLIDES
+%------------------------------------------------------------------------------
+
+
+\input{section_1_attack_surface}
+
+
+\input{section_2_hashing}
+
+
+\input{section_3_asymetric_encryption}
+
+
+\input{section_4_mitm_https}
+
+
+\input{section_5_vulnerabilities}
+
+\input{section_6_technological_watch}
+
+
+\input{section_7_vpn}
+
+
+\input{section_8_backup}
+
+
+\input{section_9_user_edu}
+
+
+\input{section_10_post_mortem}
+
+\input{section_11_conclusion_parano}
+
+
+
+
+%------------------------------------------------------------------------------
+
+\end{document}

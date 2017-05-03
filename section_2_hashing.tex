@@ -1,0 +1,78 @@
+%------------------------------------------------
+\section{Hashing}
+%------------------------------------------------
+
+\subsection{Hash Function}
+
+\begin{frame}
+
+
+Fonction qui:
+\begin{itemize}
+    \item prends en entrée des données de taille arbitraire
+    \item fait correspondre une sortie de taille fixe
+    \item est déterministe
+\end{itemize}
+
+\begin{center}
+\begin{minipage}[c]{0.7\linewidth}
+\input{res-src/highlight.sty}
+\input{res-src/hash_function.tex}
+\end{minipage}
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------
+
+
+
+
+\subsection{Cryptographic Hash Function}
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+    \item Une fonction de hachage avec les propriétés:
+    \begin{itemize}
+        \item Est rapide à calculer quelque soit la taille de l'entrée
+        \item A un espace de sortie suffisamment large
+        \item Un petit changement dans l'entrée provoque une cascade de changements en sortie
+        \item En utilisant la sortie, il est difficile de re-créer l'entrée
+        \item Si on a l'entrée et la sortie, il est difficile de trouver une autre entrée avec la même sortie
+    \end{itemize}
+\end{itemize}
+\includegraphics[scale=.5]{res/sha256sum}
+\end{frame}
+
+
+%------------------------------------------------
+
+
+\subsection{Password Hash Function}
+\begin{frame}
+Une fonction de hachage pour mots de passe doit:
+\begin{itemize}
+    \item Avoir les propriétés d'une fonction de hachage cryptographique
+    \item Utiliser un Sel concaténé avec le mot de passe
+    \item Être configurable pour pouvoir consommer:
+    \begin{itemize}
+        \item Une quantité de mémoire arbitraire
+        \item Un nombre de cycles CPU arbitraire
+    \end{itemize}
+\end{itemize}
+
+\begin{center}
+BCrypt Hash Function, cost level 10
+\end{center}
+\resizebox{\textwidth}{!}{%
+    \begin{tabular}{ c | c | c }
+    Password & Salt & Hash \\ \hline
+    \texttt{Passw0rd} & \textcolor{blue}{\texttt{Q/AzxLshsyaAqptlgni74u}} & \texttt{\$2a\$10\$}\textcolor{blue}{\texttt{Q/AzxLshsyaAqptlgni74u}}\textcolor{green}{\texttt{N5WQrGCW176CPbPSVqrt/pUNS7HW9tu}} \\ \hline
+    \texttt{lolwhat}  & \textcolor{blue}{\texttt{7JYaQZA9w/PGfv4C0ab92O}} & \texttt{\$2a\$10\$}\textcolor{blue}{\texttt{7JYaQZA9w/PGfv4C0ab92O}}\textcolor{green}{\texttt{qmH.YFrQmucp1wqRfUEd3KHI/ty6dHm}} \\ \hline
+    \texttt{lolwhat}  & \textcolor{blue}{\texttt{02h4313J6Qgs/3daZ/iaze}} & \texttt{\$2a\$10\$}\textcolor{blue}{\texttt{02h4313J6Qgs/3daZ/iaze}}\textcolor{green}{\texttt{9RJR3EIblB6HZRX8zAWuP3TNKSY1zDu}} \\ \hline
+    \end{tabular}
+}
+
+\end{frame}
+
+%------------------------------------------------
